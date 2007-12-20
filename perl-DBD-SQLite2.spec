@@ -15,6 +15,7 @@ Patch0:		perl-DBD-SQLite2-0.33-libsqlite0.patch
 BuildRequires:	perl-devel
 BuildRequires:	perl-DBI >= 1.03-1mdk
 BuildRequires:	sqlite-devel
+Buildroot:	%{_tmppath}/%{name}-%{version}
 
 %description
 
