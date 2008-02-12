@@ -18,7 +18,6 @@ BuildRequires:	sqlite-devel
 Buildroot:	%{_tmppath}/%{name}-%{version}
 
 %description
-
 SQLite is a small fast embedded SQL database engine.
 
 DBD::SQLite embeds that database engine into a DBD driver, so
