@@ -82,7 +82,7 @@ rm -f \
 	vdbeaux.c \
 	vdbeInt.h \
 	where.c
-%patch -p1 -E
+%patch0 -p1 -E
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor < /dev/null
