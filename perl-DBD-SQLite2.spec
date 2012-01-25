@@ -3,7 +3,7 @@
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 4
+Release:	5
 
 Summary:	Self Contained RDBMS in a DBI Driver (sqlite 2.x)
 License:	GPL+ or Artistic
