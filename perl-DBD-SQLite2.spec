@@ -1,21 +1,20 @@
-%define upstream_name	 DBD-SQLite2
-%define upstream_version 0.33
+%define	module	DBD-SQLite2
+%define	upstream_version 0.33
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
+Name:		perl-%{module}
+Version:	%perl_convert_version %{upstream_version}
 Release:	5
 
 Summary:	Self Contained RDBMS in a DBI Driver (sqlite 2.x)
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{upstream_name}/
-Source0:	http://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		http://search.cpan.org/dist/%{module}/
+Source0:	http://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/%{module}-%{upstream_version}.tar.bz2
 Patch0:		perl-DBD-SQLite2-0.33-libsqlite0.patch
 
 BuildRequires:	perl-devel
 BuildRequires:	perl-DBI >= 1.03-1mdk
 BuildRequires:	sqlite-devel
-Buildroot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 SQLite is a small fast embedded SQL database engine.
@@ -37,7 +36,7 @@ same system.
 
 %prep
 
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{module}-%{upstream_version}
 # remove the embedded SQLite 2
 rm -f \
 	attach.c \
@@ -87,21 +86,16 @@ rm -f \
 rm -f t/ak-dbd.t
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor < /dev/null
-%make CCFLAGS="$RPM_OPT_FLAGS" OPTIMIZE="-DNDEBUG=1 -DSQLITE_PTR_SZ=4"
+perl Makefile.PL INSTALLDIRS=vendor < /dev/null
+%make OPTIMIZE="-DNDEBUG=1 -DSQLITE_PTR_SZ=4"
 
 %check
 make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc README* Changes
 %{perl_vendorlib}/*
 %{_mandir}/*/*
