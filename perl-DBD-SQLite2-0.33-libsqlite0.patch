@@ -1,0 +1,96 @@
+diff -urN DBD-SQLite2-0.33/dbdimp.h DBD-SQLite2-0.33-1mdk/dbdimp.h
+--- DBD-SQLite2-0.33/dbdimp.h	2004-08-09 15:17:59.000000000 +0200
++++ DBD-SQLite2-0.33-1mdk/dbdimp.h	2004-12-15 11:08:35.769446000 +0100
+@@ -4,7 +4,9 @@
+ #define _DBDIMP_H   1
+ 
+ #include "SQLiteXS.h"
+-#include "sqliteInt.h"
++
++/* definition of the opaque (internal) sqlite VM structure */
++typedef struct sqlite_vm sqlite_vm;
+ 
+ /* 30 second timeout by default */
+ #define SQL_TIMEOUT 30000
+diff -urN DBD-SQLite2-0.33/Makefile.PL DBD-SQLite2-0.33-1mdk/Makefile.PL
+--- DBD-SQLite2-0.33/Makefile.PL	2004-09-10 15:34:38.000000000 +0200
++++ DBD-SQLite2-0.33-1mdk/Makefile.PL	2004-12-15 11:03:14.828272000 +0100
+@@ -13,6 +13,7 @@
+     'PREREQ_PM'     => {DBI => 1.21}, # e.g., Module::Name => 1.1
+     'OBJECT'        => '$(O_FILES)',
+     'INC'           => '-I$(DBI_INSTARCH_DIR)',
++    'LIBS'          => [ "-lsqlite" ],
+     'OPTIMIZE'      => "-O2",
+     'DEFINE'        => "-DNDEBUG=1 -DSQLITE_PTR_SZ=$Config{ptrsize}" .
+                        ($Config{d_usleep} ? " -DHAVE_USLEEP=1" : ""),
+diff -urN DBD-SQLite2-0.33/MANIFEST DBD-SQLite2-0.33-1mdk/MANIFEST
+--- DBD-SQLite2-0.33/MANIFEST	2004-08-08 17:04:33.000000000 +0200
++++ DBD-SQLite2-0.33-1mdk/MANIFEST	2004-12-15 12:00:35.719928020 +0100
+@@ -5,40 +5,9 @@
+ README
+ SQLite2.xs
+ SQLiteXS.h
+-attach.c
+-auth.c
+-btree.c
+-btree.h
+-btree_rb.c
+-build.c
+-copy.c
+-date.c
+ dbdimp.c
+ dbdimp.h
+-delete.c
+-encode.c
+-expr.c
+-func.c
+-getsqlite.pl
+-hash.c
+-hash.h
+-insert.c
+ lib/DBD/SQLite2.pm
+-main.c
+-opcodes.c
+-opcodes.h
+-os.c
+-os.h
+-pager.c
+-pager.h
+-parse.c
+-parse.h
+-pragma.c
+-printf.c
+-random.c
+-select.c
+-sqlite.h
+-sqliteInt.h
+ t/00basic.t
+ t/01logon.t
+ t/02cr_table.t
+@@ -65,15 +34,4 @@
+ t/ak-dbd.t
+ t/dbdadmin.t
+ t/lib.pl
+-table.c
+-tokenize.c
+-trigger.c
+-update.c
+-util.c
+-vacuum.c
+-vdbe.c
+-vdbe.h
+-vdbeaux.c
+-vdbeInt.h
+-where.c
+ META.yml                                Module meta-data (added by MakeMaker)
+diff -urN DBD-SQLite2-0.33/SQLiteXS.h DBD-SQLite2-0.33-1mdk/SQLiteXS.h
+--- DBD-SQLite2-0.33/SQLiteXS.h	2004-08-08 17:03:58.000000000 +0200
++++ DBD-SQLite2-0.33-1mdk/SQLiteXS.h	2004-12-15 11:00:04.268106000 +0100
+@@ -10,6 +10,6 @@
+ #include "dbdimp.h"
+ #include <dbd_xsh.h>
+ 
+-#include "sqlite.h"
++#include <sqlite.h>
+ 
+ #endif
