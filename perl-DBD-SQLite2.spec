@@ -99,3 +99,79 @@ make test
 %doc README* Changes
 %{perl_vendorlib}/*
 %{_mandir}/*/*
+
+
+%changelog
+* Thu Feb 02 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.330.0-5
++ Revision: 770585
+- clean up spec
+- svn commit -m mass rebuild of perl extension against perl 5.14.2
+
+* Sun May 29 2011 Funda Wang <fwang@mandriva.org> 0.330.0-4
++ Revision: 681355
+- mass rebuild
+
+* Tue Jul 20 2010 Jérôme Quelin <jquelin@mandriva.org> 0.330.0-3mdv2011.0
++ Revision: 555788
+- rebuild for perl 5.12
+
+* Tue Jul 20 2010 Sandro Cazzaniga <kharec@mandriva.org> 0.330.0-2mdv2011.0
++ Revision: 555463
+- rebuild
+
+* Wed Aug 05 2009 Jérôme Quelin <jquelin@mandriva.org> 0.330.0-1mdv2010.0
++ Revision: 410153
+- rebuild using %%perl_convert_version
+
+  + Michael Scherer <misc@mandriva.org>
+    - fix patch application
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+    - rebuild
+    - fix spacing at top of description
+    - rebuild
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+
+* Fri Nov 17 2006 Oden Eriksson <oeriksson@mandriva.com> 0.33-4mdv2007.0
++ Revision: 85332
+- Import perl-DBD-SQLite2
+
+* Fri Nov 17 2006 Oden Eriksson <oeriksson@mandriva.com> 0.33-4
+- rebuild
+
+* Tue Sep 27 2005 Guillaume Rousse <guillomovitch@mandriva.org> 0.33-3mdk
+- spec cleanup
+
+* Thu Dec 16 2004 Oden Eriksson <oeriksson@mandrakesoft.com> 0.33-2mdk
+- applied changes by Yann Droneaud <ydroneaud@mandrakesoft.com>:
+ - link against installed libsqlite0
+ - removed getsqlite.pl which conflicted with perl-DBD-SQLite package
+- fix deps
+
+* Thu Dec 02 2004 Oden Eriksson <oeriksson@mandrakesoft.com> 0.33-1mdk
+- used the spec file from the perl-DBD-SQLite package
+
+* Mon Nov 15 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 1.07-2mdk 
+- rebuild for new perl
+- remove README.urpmi
+
+* Fri Oct 15 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 1.07-1mdk
+- 1.07.
+
+* Wed Aug 11 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 1.03-1mdk
+- 1.03.
+- Remove patch 1.
+
+* Thu Jul 29 2004 Rafael Garcia-Suarez <rgarciasuarez@mandrakesoft.com> 1.00-1mdk
+- 1.00, incompatible format with previous versions.
+- Remove MANIFEST, add README.update.urpmi.
+- Patch to prevent interactivity in Makefile.PL
+
+* Tue May 18 2004 Olivier Thauvin <thauvin@aerov.jussieu.fr> 0.31-2mdk
+- Fix compile FLAGS
+
