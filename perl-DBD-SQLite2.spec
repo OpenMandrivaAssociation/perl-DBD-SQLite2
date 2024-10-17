@@ -8,7 +8,7 @@ Release:	7
 Summary:	Self Contained RDBMS in a DBI Driver (sqlite 2.x)
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{module}/
+Url:		https://search.cpan.org/dist/%{module}/
 Source0:	http://search.cpan.org/CPAN/authors/id/M/MS/MSERGEANT/%{module}-%{upstream_version}.tar.bz2
 Patch0:		perl-DBD-SQLite2-0.33-libsqlite0.patch
 
